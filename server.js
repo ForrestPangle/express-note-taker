@@ -9,8 +9,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 const dbNotes = JSON.parse(
-  fs.readFileSync(path.join(__dirname, "/db/db.json"), (err, data) => {
-    if (err) throw err;
+  fs.readFileSync(path.join(__dirname, "/db/db.json"), (error, data) => {
+    if (error) throw error;
   })
 );
 
@@ -18,13 +18,12 @@ const dbUpdate = (dbNotes) => {
   fs.writeFileSync(
     path.join(__dirname, "/db/db.json"),
     JSON.stringify(dbNotes),
-    (err) => {
-      if (err) throw err;
+    (error) => {
+      if (error) throw error;
     }
   );
 };
 
-// these first app.get requests are for the html pages
 app.get("/assets/css/styles.css", function (req, res) {
   res.sendFile(path.join(__dirname, "/public/assets/css/styles.css"));
 });
@@ -44,7 +43,7 @@ app.get("/notes", function (req, res) {
 app.get("/api/notes", function (req, res) {
   return res.json(dbNotes);
 });
-// these requests are for posting and deleting the notes
+
 app.post("/api/notes", function (req, res) {
   let newNote = req.body;
   let id = dbNotes.length;
@@ -61,7 +60,7 @@ app.delete("/api/notes/:id", (req, res) => {
   dbUpdate(dbNotes);
   res.send(dbNotes);
 });
-// listener!
+
 app.listen(PORT, function () {
   console.log("http://localhost:" + PORT);
 });
