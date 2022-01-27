@@ -1,1 +1,5 @@
-[{"title":"1","text":"1","id":1},{"title":"Note testing","text":"I cant give up now. or ever!","id":2},null,{"title":"3gr5rteg","text":"5g53ytg5y5yy5","id":4},{"title":"eee","text":"ewdede","id":5}]
+[
+  { "title": "I", "text": "I", "id": 1 },
+  { "title": "Love", "text": "Love", "id": 2 },
+  { "title": "Italy", "text": "Italy", "id": 3 }
+]
